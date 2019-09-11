@@ -144,6 +144,25 @@ void LinkedList<T>::InsertAt(int pos,T elem)
 	newnode->SetNext(temp->GetNext());
 	temp->SetNext(newnode);
 }
-/*template <class T>*/
+
+template <class T>
+void LinkedList<T>::Reverse()
+{	
+	Node<T> *nhead=head;
+	nhead->SetData(head->GetData());
+	nhead->SetNext(nullptr);
+	head=head->GetNext();
+		//cout<<"Inside else"<<endl;
+	while(head!=nullptr)
+		{
+			cout<<"Inside while"<<endl;
+			Node<T> *temp=head;
+			temp->SetNext(nhead);
+			nhead=temp;
+			head=head->GetNext();
+		}
+		head=nhead;
+
+}
 
 template class LinkedList<int>;
