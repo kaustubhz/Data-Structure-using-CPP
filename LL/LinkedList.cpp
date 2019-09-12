@@ -1,13 +1,14 @@
-#include"LinkedList.h"
+#include "LinkedList.h"
 
 template <class T>
-LinkedList<T>::LinkedList():count(0),head(nullptr),tail(nullptr)
-{}
+LinkedList<T>::LinkedList() : count(0), head(nullptr), tail(nullptr)
+{
+}
 
 template <class T>
 bool LinkedList<T>::IsEmpty()
 {
-	return (nullptr==head && nullptr==tail);
+	return (nullptr == head && nullptr == tail);
 }
 
 template <class T>
@@ -24,19 +25,19 @@ int LinkedList<T>::Size()
 template <class T>
 void LinkedList<T>::AddAtBegin(T ele)
 {
-	Node<T> *t=new Node<T>;
+	Node<T> *t = new Node<T>;
 	t->SetData(ele);
 	t->SetNext(nullptr);
-	if(IsEmpty())
+	if (IsEmpty())
 	{
-		head=t;
-		tail=t;
+		head = t;
+		tail = t;
 		count++;
 	}
 	else
 	{
 		t->SetNext(head);
-		head=t;
+		head = t;
 		count++;
 	}
 }
@@ -44,17 +45,17 @@ void LinkedList<T>::AddAtBegin(T ele)
 template <class T>
 void LinkedList<T>::AddAtEnd(T elem)
 {
-	Node<T> *temp=new Node<T>;
+	Node<T> *temp = new Node<T>;
 	temp->SetData(elem);
-	temp->SetNext(nullptr);	
-	if(!IsEmpty())
+	temp->SetNext(nullptr);
+	if (!IsEmpty())
 	{
 		tail->SetNext(temp);
-		tail=temp;
+		tail = temp;
 	}
 	else
 	{
-		head=tail=temp;	
+		head = tail = temp;
 	}
 	count++;
 }
@@ -63,22 +64,22 @@ template <class T>
 T LinkedList<T>::DeleteAtBegin()
 {
 	T ele;
-	if(!IsEmpty())
+	if (!IsEmpty())
 	{
-		Node<T> *t=head;
-		ele=head->GetData();
-		if(head==tail)
+		Node<T> *t = head;
+		ele = head->GetData();
+		if (head == tail)
 		{
-			head=nullptr;
-			tail=nullptr;
+			head = nullptr;
+			tail = nullptr;
 			delete t;
 			count--;
 		}
 		else
 		{
-			head=head->GetNext();			
+			head = head->GetNext();
 			delete t;
-			cout<<"Deleted "<<ele<<" at beginning"<<endl;
+			cout << "Deleted " << ele << " at beginning" << endl;
 			count--;
 		}
 	}
@@ -88,44 +89,44 @@ T LinkedList<T>::DeleteAtBegin()
 template <class T>
 void LinkedList<T>::DisplayAll()
 {
-	Node<T> *temp=head;
-	if(temp==nullptr)
+	Node<T> *temp = head;
+	if (temp == nullptr)
 	{
-		cout<<"\nLinked List empty"<<endl;
+		cout << "\nLinked List empty" << endl;
 		return;
 	}
-	while(temp!=nullptr)
+	while (temp != nullptr)
 	{
-		cout<<temp->GetData()<<"-->";
-		temp=temp->GetNext();
+		cout << temp->GetData() << "-->";
+		temp = temp->GetNext();
 	}
-	cout<<"NULL"<<endl;
+	cout << "NULL" << endl;
 }
 
 template <class T>
 T LinkedList<T>::DeleteAtEnd()
 {
 	T ele;
-	if(!IsEmpty())
+	if (!IsEmpty())
 	{
-		Node<T> *t=head;
-		ele=tail->GetData();
-		if(head==tail)
+		Node<T> *t = head;
+		ele = tail->GetData();
+		if (head == tail)
 		{
-			head= nullptr;
-			tail=nullptr;
+			head = nullptr;
+			tail = nullptr;
 			delete t;
 			count--;
 		}
 		else
 		{
-			while(t->GetNext()!=tail)
+			while (t->GetNext() != tail)
 			{
-				t=t->GetNext();
+				t = t->GetNext();
 			}
 			t->SetNext(nullptr);
 			delete tail;
-			tail=t;
+			tail = t;
 			count--;
 		}
 	}
@@ -133,17 +134,18 @@ T LinkedList<T>::DeleteAtEnd()
 }
 
 template <class T>
-void LinkedList<T>::InsertAt(int pos,T elem)
+void LinkedList<T>::InsertAt(int pos, T elem)
 {
-	if(pos>=count and pos<=0)
+	if (pos >= count and pos <= 0)
 	{
-		cout<<"Please insert at appropriate position";
+		cout << "Please insert at appropriate position";
 		return;
 	}
-	Node<T>*temp=head;
-	for(int i=1;i<pos-1;temp=temp->GetNext(),i++);
-	
-	Node<T> *newnode=new Node<T>;
+	Node<T> *temp = head;
+	for (int i = 1; i < pos - 1; temp = temp->GetNext(), i++)
+		;
+
+	Node<T> *newnode = new Node<T>;
 	newnode->SetData(elem);
 
 	newnode->SetNext(temp->GetNext());
@@ -154,24 +156,23 @@ void LinkedList<T>::InsertAt(int pos,T elem)
 template <class T>
 void LinkedList<T>::Reverse()
 {
-	Node<T> *nhead=head,*temp=nullptr;	
+	Node<T> *nhead = head, *temp = nullptr;
 
-	head=head->GetNext();
+	head = head->GetNext();
 	//nhead->SetData(head->GetData());
 	nhead->SetNext(nullptr);
-	tail=nhead;
-		//cout<<"Inside else"<<endl;
-//	cout<<"Head value "<<head<<endl;
-	while(head!=nullptr)
-		{
-//			cout<<"Inside while"<<endl;
-			temp=head;
-			head=head->GetNext();
-			temp->SetNext(nhead);
-			nhead=temp;
-		}
-//		head=nhead;
-
+	tail = nhead;
+	//cout<<"Inside else"<<endl;
+	//	cout<<"Head value "<<head<<endl;
+	while (head != nullptr)
+	{
+		//			cout<<"Inside while"<<endl;
+		temp = head;
+		head = head->GetNext();
+		temp->SetNext(nhead);
+		nhead = temp;
+	}
+	head = nhead;
 }
 
-//template class LinkedList<int>;
+template class LinkedList<int>;
