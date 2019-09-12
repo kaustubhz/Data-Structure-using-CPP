@@ -1,7 +1,7 @@
 #include"LinkedList.h"
 
 template <class T>
-LinkedList<T>::LinkedList():count(10),head(nullptr),tail(nullptr)
+LinkedList<T>::LinkedList():count(0),head(nullptr),tail(nullptr)
 {}
 
 template <class T>
@@ -16,6 +16,11 @@ bool LinkedList<T>::IsFull()
 	return false;
 }
 
+template <class T>
+int LinkedList<T>::Size()
+{
+	return count;
+}
 template <class T>
 void LinkedList<T>::AddAtBegin(T ele)
 {
@@ -143,26 +148,30 @@ void LinkedList<T>::InsertAt(int pos,T elem)
 
 	newnode->SetNext(temp->GetNext());
 	temp->SetNext(newnode);
+	count++;
 }
 
 template <class T>
 void LinkedList<T>::Reverse()
-{	
-	Node<T> *nhead=head;
-	nhead->SetData(head->GetData());
-	nhead->SetNext(nullptr);
+{
+	Node<T> *nhead=head,*temp=nullptr;	
+
 	head=head->GetNext();
+	//nhead->SetData(head->GetData());
+	nhead->SetNext(nullptr);
+	tail=nhead;
 		//cout<<"Inside else"<<endl;
+//	cout<<"Head value "<<head<<endl;
 	while(head!=nullptr)
 		{
-			cout<<"Inside while"<<endl;
-			Node<T> *temp=head;
+//			cout<<"Inside while"<<endl;
+			temp=head;
+			head=head->GetNext();
 			temp->SetNext(nhead);
 			nhead=temp;
-			head=head->GetNext();
 		}
 		head=nhead;
 
 }
 
-template class LinkedList<int>;
+//template class LinkedList<int>;
