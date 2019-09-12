@@ -170,7 +170,7 @@ void LinkedList<T>::Reverse()
 			temp->SetNext(nhead);
 			nhead=temp;
 		}
-		head=nhead;
+//		head=nhead;
 
 }
 

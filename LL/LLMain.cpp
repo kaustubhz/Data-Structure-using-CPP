@@ -1,5 +1,5 @@
-#include"LinkedList.cpp"
-#include"Node.cpp"
+#include"LinkedList.h"
+//#include"Node.cpp"
 
 int main()
 {
