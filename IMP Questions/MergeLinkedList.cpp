@@ -3,15 +3,15 @@
 using namespace std;
 
 template<class T>
-ostream& operator<<(ostream& out,list<T>& list)
+ostream& operator<<(ostream& out,list<T>& li)
 {
 	list<int>::iterator temp;
-	for(temp=list.begin();temp!=list.end();++temp)
+	for(temp=li.begin();temp!=li.end();++temp)
 	{
 		out<<*temp<<" <--> ";
 	}
-	//for(auto &temp:list)
-	//	out<<temp<<" <--> ";
+/*	for(auto &temp:list)
+		out<<temp<<" <--> ";*/
 	out<<"END"<<endl;
 	return out;
 }
@@ -59,14 +59,16 @@ int main()
 				break;
 			case 4:
 				{
+					list<int> linkedlist3;
 					linkedlist1.sort();
 					linkedlist2.sort();
-					linkedlist1.merge(linkedlist2);
-					cout<<endl<<"Both lists are sorted and merged";
+					linkedlist3.merge(linkedlist1);
+					linkedlist3.merge(linkedlist2);
+					cout<<endl<<"Both lists are sorted and merged\n"<<linkedlist3;
 				}
 				break;
 			case 5:
-				cout<<endl<<"EXITING";
+				cout<<endl<<"EXITING"<<endl;
 				break;
 			default: 
 				cout<<"\nPlease enter a valid choice";
