@@ -24,6 +24,10 @@ class DLinkedList
 		void SetCount(int);
 
 		void AddAtBegin(T);
+		
+		void AddAtTail(T);
+
+		void AddToNextNode(T);
 
 		void Display();
 
