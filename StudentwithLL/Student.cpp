@@ -28,7 +28,7 @@ ostream&  operator<<(ostream& out,const Student &s)
 
 Student::~Student()
 {
-	std::cout<<"\nStudent removed";
+	//std::cout<<"\nStudent removed";
 }
 
 

@@ -21,6 +21,27 @@ int LinkedList<T>::Size()
 {
 	return count;
 }
+
+template<class T>
+string LinkedList<T>::GetCourse()
+{
+	return course;
+}
+
+template<class T>
+void LinkedList<T>::AcceptCourse()
+{
+	cout << "\nEnter a stream: ";
+	cin>>course;
+}
+
+template<class T>
+void LinkedList<T>::DisplayCourse()
+{
+	cout<<course;	
+}
+
+
 template <class T>
 void LinkedList<T>::AddAtBegin(T ele)
 {
@@ -93,15 +114,15 @@ void LinkedList<T>::DisplayAll()
 	Node<T> *temp=head;
 	if(temp==nullptr)
 	{
-		cout<<"\nLinked List empty"<<endl;
+		cout<<"\nNo student record inserted"<<endl;
 		return;
 	}
 	while(temp!=nullptr)
 	{
-		cout<<temp->GetData()<<"-->";
+		cout<<temp->GetData();
 		temp=temp->GetNext();
 	}
-	cout<<"NULL"<<endl;
+	cout<<endl;
 }
 
 template <class T>
@@ -159,14 +180,12 @@ void LinkedList<T>::Reverse()
 	Node<T> *nhead=head,*temp=nullptr;	
 
 	head=head->GetNext();
-	//nhead->SetData(head->GetData());
+	
 	nhead->SetNext(nullptr);
 	tail=nhead;
-		//cout<<"Inside else"<<endl;
-//	cout<<"Head value "<<head<<endl;
+
 	while(head!=nullptr)
 		{
-//			cout<<"Inside while"<<endl;
 			temp=head;
 			head=head->GetNext();
 			temp->SetNext(nhead);
@@ -191,7 +210,7 @@ LinkedList<T>::~LinkedList()
 	}
 	
 	head=tail=nullptr;
-	cout<<"\nLinked List deleted";
+	cout<<"\nStudent list removed";
 }
 
 template class LinkedList<int>;
